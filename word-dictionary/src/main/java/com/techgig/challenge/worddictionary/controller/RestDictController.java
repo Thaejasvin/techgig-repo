@@ -1,6 +1,9 @@
 package com.techgig.challenge.worddictionary.controller;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -29,7 +32,7 @@ public class RestDictController {
 		
 		try {
 			JSONObject obj = (JSONObject) jsonParser
-					.parse(new FileReader(new ClassPathResource("dict.json").getFile()));
+					.parse(new BufferedReader(new InputStreamReader(new ClassPathResource("dict.json").getInputStream())));
 			JSONArray ja = new JSONArray();
 			ja.add(obj);
 			for (Object o : ja) {
